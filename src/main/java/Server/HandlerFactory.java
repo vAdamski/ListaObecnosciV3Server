@@ -28,8 +28,9 @@ public class HandlerFactory {
                 return new CreateStudentGroupCommandHandler();
             case "DeleteStudentGroup":
                 return new DeleteStudentGroupCommandHandler();
-            case "GetListOfStudentGroups":
+            case "GetStudentGroupList":
                 return new GetListOfGroupsQueryHandler();
+                
             default:
                 return null;
         }

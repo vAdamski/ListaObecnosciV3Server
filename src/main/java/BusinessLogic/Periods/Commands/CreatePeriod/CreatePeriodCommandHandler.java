@@ -41,7 +41,7 @@ public class CreatePeriodCommandHandler implements IRequestHandler {
             ArrayList<Student> studentsInGroup = _studentRepository.getStudentListForGroup(period.getGroupId());
 
             for (Student student : studentsInGroup) {
-                _presenceRepository.createPresence(new Presence( student.getStudentIndex(), period.getPeriodId(), PresenceStatus.UNKNOWN.toString()));
+                _presenceRepository.createPresence(new Presence( student.getStudentIndex(), period.getPeriodId(), PresenceStatus.UNKNOWN.toString(), null));
             }
 
             return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));

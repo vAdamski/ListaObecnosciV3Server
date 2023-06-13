@@ -37,7 +37,7 @@ public class ClientHandler implements Runnable {
 
                 // writing the received message from
                 // client
-//                System.out.printf(" Sent from the client: %s\n", json);
+                // System.out.printf(" Sent from the client: %s\n", json);
 
                 IRequestHandler requestHandler = new HandlerFactory().getHandler(json);
                 String jsonResponse = requestHandler.handle(json);

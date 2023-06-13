@@ -6,21 +6,20 @@ import javax.persistence.*;
 @Table(name = "presence")
 public class Presence {
     @Id
+    private Integer presenceId;
     private String studentIndex;
-    @Id
     private int periodId;
     private String status;
 
     public Presence() {
     }
 
-    public Presence(String studentIndex, int periodId, String status) {
+    public Presence(String studentIndex, int periodId, String status, Integer presenceId) {
         this.studentIndex = studentIndex;
         this.periodId = periodId;
         this.status = status;
+        this.presenceId = presenceId;
     }
-
-    // Getters and setters for the class variables
 
     public String getStudentIndex() {
         return studentIndex;
@@ -44,6 +43,14 @@ public class Presence {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Integer getPresenceId() {
+        return presenceId;
+    }
+
+    public void setPresenceId(Integer presenceId) {
+        this.presenceId = presenceId;
     }
 }
 
