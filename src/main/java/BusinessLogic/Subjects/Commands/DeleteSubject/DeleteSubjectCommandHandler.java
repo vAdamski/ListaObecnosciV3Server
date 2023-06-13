@@ -14,7 +14,7 @@ public class DeleteSubjectCommandHandler implements IRequestHandler {
     }
 
     @Override
-    public ResponseHandler<Boolean> handle(String json) {
+    public String handle(String json) throws Exception {
         try {
             TypeReference<DataHandler<Integer>> typeReference = new TypeReference<DataHandler<Integer>>() {};
             DataHandler<Integer> dataHandler = JsonConverter.convertJsonToClass(json, typeReference);
@@ -23,9 +23,9 @@ public class DeleteSubjectCommandHandler implements IRequestHandler {
 
             _subjectRepository.deleteSubject(dataHandler.getObject());
 
-            return new ResponseHandler<Boolean>(true, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         } catch (Exception e) {
-            return new ResponseHandler<Boolean>(false, e.getMessage(), false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(false, e.getMessage(), false));
         }
     }
 }

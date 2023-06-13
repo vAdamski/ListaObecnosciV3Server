@@ -21,7 +21,7 @@ public class CreateSubjectCommandHandler implements IRequestHandler {
     }
 
     @Override
-    public ResponseHandler<Boolean> handle(String json) {
+    public String handle(String json) throws Exception {
         try {
             TypeReference<DataHandler<CreateSubjectVm>> typeReference = new TypeReference<DataHandler<CreateSubjectVm>>() {};
             DataHandler<CreateSubjectVm> dataHandler = JsonConverter.convertJsonToClass(json ,typeReference);
@@ -30,11 +30,11 @@ public class CreateSubjectCommandHandler implements IRequestHandler {
 
             _subjectRepository.createSubject(subject);
 
-            return new ResponseHandler<Boolean>(true, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         } catch (Exception e) {
             ArrayList<String> errors = new ArrayList<String>();
             errors.add(e.getMessage());
-            return new ResponseHandler<>(false, errors, false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<>(false, errors, false));
         }
     }
 }

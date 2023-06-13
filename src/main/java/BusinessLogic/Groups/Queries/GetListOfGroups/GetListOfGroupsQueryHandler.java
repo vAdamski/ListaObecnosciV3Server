@@ -2,6 +2,7 @@ package BusinessLogic.Groups.Queries.GetListOfGroups;
 
 import BusinessLogic.Interfaces.IRequestHandler;
 import Shared.Entities.StudentGroup;
+import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
 import Repositories.StudentGroupRepository;
 
@@ -14,17 +15,17 @@ public class GetListOfGroupsQueryHandler implements IRequestHandler {
     }
 
     @Override
-    public ResponseHandler<ArrayList<StudentGroup>> handle(String json) {
+    public String handle(String json) throws Exception {
         try
         {
             ArrayList<StudentGroup> studentGroups = _studentGroupRepository.getListOfGroups();
-            return new ResponseHandler<ArrayList<StudentGroup>>(studentGroups, new ArrayList<>(), true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<ArrayList<StudentGroup>>(studentGroups, new ArrayList<>(), true));
         }
         catch (Exception e)
         {
             ArrayList<String> errors = new ArrayList<String>();
             errors.add(e.getMessage());
-            return new ResponseHandler<ArrayList<StudentGroup>>(null, errors, false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<ArrayList<StudentGroup>>(null, errors, false));
         }
     }
 }

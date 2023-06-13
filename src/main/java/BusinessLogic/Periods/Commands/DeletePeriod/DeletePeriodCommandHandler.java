@@ -15,7 +15,7 @@ public class DeletePeriodCommandHandler implements IRequestHandler {
     }
 
     @Override
-    public ResponseHandler<?> handle(String json) {
+    public String handle(String json) throws Exception {
         try
         {
             TypeReference<DataHandler<Integer>> typeReference = new TypeReference<DataHandler<Integer>>() {};
@@ -23,11 +23,11 @@ public class DeletePeriodCommandHandler implements IRequestHandler {
 
             _periodRepository.deletePeriod(dataHandler.getObject());
 
-            return new ResponseHandler<Boolean>(true, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         }
         catch (Exception e)
         {
-            return new ResponseHandler<Boolean>(null, e.getMessage(), false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(null, e.getMessage(), false));
         }
     }
 }

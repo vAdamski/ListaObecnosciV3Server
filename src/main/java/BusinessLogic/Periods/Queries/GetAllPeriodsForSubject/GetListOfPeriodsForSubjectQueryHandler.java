@@ -17,7 +17,7 @@ public class GetListOfPeriodsForSubjectQueryHandler implements IRequestHandler {
     }
 
     @Override
-    public ResponseHandler<ArrayList<Period>> handle(String json) {
+    public String handle(String json) throws Exception {
         try
         {
             TypeReference<DataHandler<Integer>> typeReference = new TypeReference<DataHandler<Integer>>() {};
@@ -25,11 +25,11 @@ public class GetListOfPeriodsForSubjectQueryHandler implements IRequestHandler {
 
             ArrayList<Period> periods = _periodRepository.getListOfPeriodsForSubject(dataHandler.getObject());
 
-            return new ResponseHandler<ArrayList<Period>>(periods, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<ArrayList<Period>>(periods, true));
         }
         catch (Exception e)
         {
-            return new ResponseHandler<ArrayList<Period>>(null, e.getMessage(), false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<ArrayList<Period>>(null, e.getMessage(), false));
         }
     }
 }

@@ -28,7 +28,7 @@ public class CreatePeriodCommandHandler implements IRequestHandler {
     }
 
     @Override
-    public ResponseHandler<Boolean> handle(String json) {
+    public String handle(String json) throws Exception {
         try
         {
             TypeReference<DataHandler<CreatePeriodVm>> typeReference = new TypeReference<DataHandler<CreatePeriodVm>>() {};
@@ -44,11 +44,11 @@ public class CreatePeriodCommandHandler implements IRequestHandler {
                 _presenceRepository.createPresence(new Presence( student.getStudentIndex(), period.getPeriodId(), PresenceStatus.UNKNOWN.toString()));
             }
 
-            return new ResponseHandler<Boolean>(true, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         }
         catch (Exception e)
         {
-            return new ResponseHandler<Boolean>(null, e.getMessage(), false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(null, e.getMessage(), false));
         }
     }
 }

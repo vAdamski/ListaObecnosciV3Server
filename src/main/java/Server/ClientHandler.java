@@ -1,5 +1,7 @@
 package Server;
 
+import BusinessLogic.Interfaces.IRequestHandler;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,21 +32,24 @@ public class ClientHandler implements Runnable {
                     new InputStreamReader(
                             clientSocket.getInputStream()));
 
-            String line;
-            while ((line = in.readLine()) != null) {
+            String json;
+            while ((json = in.readLine()) != null) {
 
                 // writing the received message from
                 // client
-                System.out.printf(
-                        " Sent from the client: %s\n",
-                        line);
-                out.println(line);
+//                System.out.printf(" Sent from the client: %s\n", json);
+
+                IRequestHandler requestHandler = new HandlerFactory().getHandler(json);
+                String jsonResponse = requestHandler.handle(json);
+
+                out.println(jsonResponse);
             }
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
             try {
                 if (out != null) {
                     out.close();

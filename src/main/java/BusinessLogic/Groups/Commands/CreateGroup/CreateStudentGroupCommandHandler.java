@@ -22,7 +22,7 @@ public class CreateStudentGroupCommandHandler implements IRequestHandler {
 
 
     @Override
-    public ResponseHandler<Boolean> handle(String json) {
+    public String handle(String json) throws Exception {
         try
         {
             TypeReference<DataHandler<CreateStudentGroupVm>> typeReference = new TypeReference<DataHandler<CreateStudentGroupVm>>() {};
@@ -32,13 +32,13 @@ public class CreateStudentGroupCommandHandler implements IRequestHandler {
 
             _studentGroupRepository.createStudentGroup(studentGroup);
 
-            return new ResponseHandler<Boolean>(true, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         }
         catch (Exception e)
         {
             ArrayList<String> errors = new ArrayList<String>();
             errors.add(e.getMessage());
-            return new ResponseHandler<Boolean>(false, errors, false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(false, errors, false));
         }
     }
 }

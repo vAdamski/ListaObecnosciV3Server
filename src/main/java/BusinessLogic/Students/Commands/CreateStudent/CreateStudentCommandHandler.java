@@ -18,7 +18,7 @@ public class CreateStudentCommandHandler implements IRequestHandler {
         _studentRepository = new StudentRepository();
     }
 
-    public ResponseHandler<Boolean> handle(String json) {
+    public String handle(String json) throws Exception {
         try {
             TypeReference<DataHandler<CreateStudentVm>> typeReference = new TypeReference<DataHandler<CreateStudentVm>>() {};
             DataHandler<CreateStudentVm> dataHandler = JsonConverter.convertJsonToClass(json ,typeReference);
@@ -27,12 +27,12 @@ public class CreateStudentCommandHandler implements IRequestHandler {
 
             _studentRepository.createStudent(student);
 
-            return new ResponseHandler<Boolean>(true, true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         }
         catch (Exception e) {
             ArrayList<String> errors = new ArrayList<String>();
             errors.add(e.getMessage());
-            return new ResponseHandler<Boolean>(false, errors, false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(false, errors, false));
         }
     }
 }

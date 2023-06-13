@@ -2,6 +2,7 @@ package BusinessLogic.Students.Queries.GetStudentsList;
 
 import BusinessLogic.Interfaces.IRequestHandler;
 import Shared.Entities.Student;
+import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
 import Repositories.StudentRepository;
 
@@ -13,14 +14,14 @@ public class GetStudentsListQueryHandler implements IRequestHandler {
         _studentRepository = new StudentRepository();
     }
 
-    public ResponseHandler<ArrayList<Student>> handle(String json) {
+    public String handle(String json) throws Exception {
         try {
             ArrayList<Student> students = _studentRepository.getStudentsList();
-            return new ResponseHandler<ArrayList<Student>>(students, new ArrayList<>(), true);
+            return JsonConverter.convertClassToJson(new ResponseHandler<ArrayList<Student>>(students, new ArrayList<>(), true));
         }catch (Exception e) {
             ArrayList<String> errors = new ArrayList<String>();
             errors.add(e.getMessage());
-            return new ResponseHandler<ArrayList<Student>>(null, errors, false);
+            return JsonConverter.convertClassToJson(new ResponseHandler<ArrayList<Student>>(null, errors, false));
         }
     }
 }
