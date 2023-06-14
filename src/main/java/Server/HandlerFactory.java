@@ -7,11 +7,15 @@ import BusinessLogic.Interfaces.IRequestHandler;
 import BusinessLogic.Periods.Commands.CreatePeriod.CreatePeriodCommandHandler;
 import BusinessLogic.Periods.Commands.DeletePeriod.DeletePeriodCommandHandler;
 import BusinessLogic.Periods.Queries.GetListForGroupAndSubject.GetListForGroupAndSubjectQueryHandler;
+import BusinessLogic.Presences.Commands.UpdatePresence.UpdatePresenceCommandHandler;
+import BusinessLogic.Presences.Queries.GetPresenceList.GetPresenceListQueryHandler;
 import BusinessLogic.Students.Commands.AssigneStudentToGroup.AssigneStudentToGroupCommandHandler;
 import BusinessLogic.Students.Commands.CreateStudent.CreateStudentCommandHandler;
 import BusinessLogic.Students.Commands.DeleteStudent.DeleteStudentCommandHandler;
 import BusinessLogic.Students.Commands.DeleteStudentFromGroup.DeleteStudentFromGroupCommandHandler;
 import BusinessLogic.Students.Queries.GetStudentsList.GetStudentsListQueryHandler;
+import BusinessLogic.Subjects.Commands.CreateSubject.CreateSubjectCommandHandler;
+import BusinessLogic.Subjects.Commands.DeleteSubject.DeleteSubjectCommandHandler;
 import BusinessLogic.Subjects.Queries.GetSubjectsList.GetListOfSubjectsQueryHandler;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -49,13 +53,13 @@ public class HandlerFactory {
             case "DeletePeriod":
                 return new DeletePeriodCommandHandler();
             case "GetPresenceList":
-                return null;
+                return new GetPresenceListQueryHandler();
             case "UpdatePresence":
-                return null;
+                return new UpdatePresenceCommandHandler();
             case "CreateSubject":
-                return null;
+                return new CreateSubjectCommandHandler();
             case "DeleteSubject":
-                return null;
+                return new DeleteSubjectCommandHandler();
             default:
                 return null;
         }

@@ -29,11 +29,10 @@ public class SubjectRepository extends BaseRepository {
 
     public void deleteSubject(int id) {
         _entityManager.getTransaction().begin();
-        _entityManager.createQuery("DELETE FROM Subject s WHERE s.subjectId = :id")
+        _entityManager.createQuery("DELETE FROM Subject WHERE subjectId = :id")
                 .setParameter("id", id)
                 .executeUpdate();
         _entityManager.getTransaction().commit();
-        
     }
 
     public void deleteSubject(String name) {
@@ -42,6 +41,5 @@ public class SubjectRepository extends BaseRepository {
                 .setParameter("name", name)
                 .executeUpdate();
         _entityManager.getTransaction().commit();
-        
     }
 }

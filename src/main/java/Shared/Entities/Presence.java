@@ -6,15 +6,16 @@ import javax.persistence.*;
 @Table(name = "presence")
 public class Presence {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer presenceId;
     private String studentIndex;
-    private int periodId;
+    private Integer periodId;
     private String status;
 
     public Presence() {
     }
 
-    public Presence(String studentIndex, int periodId, String status, Integer presenceId) {
+    public Presence(String studentIndex, Integer periodId, String status, Integer presenceId) {
         this.studentIndex = studentIndex;
         this.periodId = periodId;
         this.status = status;
@@ -29,11 +30,11 @@ public class Presence {
         this.studentIndex = studentIndex;
     }
 
-    public int getPeriodId() {
+    public Integer getPeriodId() {
         return periodId;
     }
 
-    public void setPeriodId(int periodId) {
+    public void setPeriodId(Integer periodId) {
         this.periodId = periodId;
     }
 

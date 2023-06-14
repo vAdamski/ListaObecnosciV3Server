@@ -12,6 +12,7 @@ import Shared.ViewModels.PresenceVm;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GetPresenceListQueryHandler implements IRequestHandler {
     private final PresenceRepository _presenceRepository;
@@ -35,7 +36,7 @@ public class GetPresenceListQueryHandler implements IRequestHandler {
             ArrayList<PresenceVm> presenceVms = new ArrayList<>();
 
             presences.forEach(presence -> {
-                Student student = students.stream().filter(x -> x.getStudentIndex() == presence.getStudentIndex()).findFirst().orElse(null);
+                Student student = students.stream().filter(x -> Objects.equals(x.getStudentIndex(), presence.getStudentIndex())).findFirst().orElse(null);
                 presenceVms.add(new PresenceVm(
                         student.getStudentIndex(),
                         presence.getPeriodId(),

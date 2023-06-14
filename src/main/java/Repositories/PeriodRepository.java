@@ -51,8 +51,10 @@ public class PeriodRepository extends BaseRepository{
     }
 
     public void deleteAllPeriodsForSubject(Integer object) {
-        _entityManager.createQuery("DELETE FROM Period p WHERE p.subjectId = :subjectId")
+        _entityManager.getTransaction().begin();
+        _entityManager.createQuery("DELETE FROM Period WHERE subjectId = :subjectId")
                 .setParameter("subjectId", object)
                 .executeUpdate();
+        _entityManager.getTransaction().commit();
     }
 }

@@ -10,7 +10,9 @@ public class PresenceRepository extends BaseRepository {
     }
 
     public void createPresence(Presence presence) {
+        _entityManager.getTransaction().begin();
         _entityManager.persist(presence);
+        _entityManager.getTransaction().commit();
     }
 
     public void deletePresence(Presence presence) {
@@ -37,9 +39,11 @@ public class PresenceRepository extends BaseRepository {
     }
 
     public void deleteAllPresencesForPeriod(Integer periodId) {
-        _entityManager.createQuery("DELETE FROM Presence p WHERE p.periodId = :periodId")
+        _entityManager.getTransaction().begin();
+        _entityManager.createQuery("DELETE FROM Presence WHERE periodId = :periodId")
                 .setParameter("periodId", periodId)
                 .executeUpdate();
+        _entityManager.getTransaction().commit();
     }
 
     public void updateStudentPresence(int periodId, String studentIndex, String status) {
