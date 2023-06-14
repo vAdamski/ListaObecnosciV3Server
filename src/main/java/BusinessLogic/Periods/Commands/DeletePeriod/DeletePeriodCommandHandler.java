@@ -1,6 +1,7 @@
 package BusinessLogic.Periods.Commands.DeletePeriod;
 
 import BusinessLogic.Interfaces.IRequestHandler;
+import Repositories.PresenceRepository;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
@@ -9,9 +10,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 public class DeletePeriodCommandHandler implements IRequestHandler {
     private final PeriodRepository _periodRepository;
+    private final PresenceRepository _presenceRepository;
     public DeletePeriodCommandHandler() {
-
         _periodRepository = new PeriodRepository();
+        _presenceRepository = new PresenceRepository();
     }
 
     @Override
@@ -22,6 +24,8 @@ public class DeletePeriodCommandHandler implements IRequestHandler {
             DataHandler<Integer> dataHandler = JsonConverter.convertJsonToClass(json, typeReference);
 
             _periodRepository.deletePeriod(dataHandler.getObject());
+
+            _presenceRepository.deletePresencesForPeriod(dataHandler.getObject());
 
             return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         }

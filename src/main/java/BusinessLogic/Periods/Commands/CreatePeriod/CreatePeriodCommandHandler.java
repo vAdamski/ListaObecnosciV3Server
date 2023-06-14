@@ -31,24 +31,22 @@ public class CreatePeriodCommandHandler implements IRequestHandler {
     public String handle(String json) throws Exception {
         try
         {
-            TypeReference<DataHandler<CreatePeriodVm>> typeReference = new TypeReference<DataHandler<CreatePeriodVm>>() {};
-            DataHandler<CreatePeriodVm> dataHandler = JsonConverter.convertJsonToClass(json, typeReference);
+            TypeReference<DataHandler<Period>> typeReference = new TypeReference<DataHandler<Period>>() {};
+            DataHandler<Period> dataHandler = JsonConverter.convertJsonToClass(json, typeReference);
 
-            Period period = CreatePeriodVmToPeriod.map(dataHandler.getObject());
+            _periodRepository.createPeriod(dataHandler.getObject());
 
-            _periodRepository.createPeriod(period);
-
-            ArrayList<Student> studentsInGroup = _studentRepository.getStudentListForGroup(period.getGroupId());
+            ArrayList<Student> studentsInGroup = _studentRepository.getStudentListForGroup(dataHandler.getObject().getGroupId());
 
             for (Student student : studentsInGroup) {
-                _presenceRepository.createPresence(new Presence( student.getStudentIndex(), period.getPeriodId(), PresenceStatus.UNKNOWN.toString(), null));
+                _presenceRepository.createPresence(new Presence( student.getStudentIndex(), dataHandler.getObject().getPeriodId(), PresenceStatus.UNKNOWN.toString(), null));
             }
 
             return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));
         }
         catch (Exception e)
         {
-            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(null, e.getMessage(), false));
+            return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(false, e.getMessage(), false));
         }
     }
 }

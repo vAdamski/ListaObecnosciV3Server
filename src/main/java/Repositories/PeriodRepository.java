@@ -41,4 +41,18 @@ public class PeriodRepository extends BaseRepository{
                 .getResultList();
         return periods;
     }
+
+    public ArrayList<Period> getListOfPeriodsForSubjectAndGroup(Integer subjectId, Integer groupId) {
+        ArrayList<Period> periods = (ArrayList<Period>) _entityManager.createQuery("SELECT p FROM Period p WHERE p.subjectId = :subjectId AND p.groupId = :groupId")
+                .setParameter("subjectId", subjectId)
+                .setParameter("groupId", groupId)
+                .getResultList();
+        return periods;
+    }
+
+    public void deleteAllPeriodsForSubject(Integer object) {
+        _entityManager.createQuery("DELETE FROM Period p WHERE p.subjectId = :subjectId")
+                .setParameter("subjectId", object)
+                .executeUpdate();
+    }
 }

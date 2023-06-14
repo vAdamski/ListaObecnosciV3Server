@@ -13,7 +13,7 @@ public enum ServerAction {
     GetListForGroupAndSubject,
     GetSubjectsList,
     DeletePeriod,
-    getPresenceList,
+    GetPresenceList,
     UpdatePresence,
     CreateSubject,
     DeleteSubject

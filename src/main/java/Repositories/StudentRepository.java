@@ -75,4 +75,18 @@ public class StudentRepository extends BaseRepository {
 
         return students;
     }
+
+    public void assigneStudentToGroup(String studentIndex, Integer groupId) {
+        _entityManager.createQuery("UPDATE Student s SET s.groupId = :groupId WHERE s.studentIndex = :studentIndex")
+                .setParameter("groupId", groupId)
+                .setParameter("studentIndex", studentIndex)
+                .executeUpdate();
+    }
+
+    public void deleteStudentFromGroup(String studentIndex, Integer groupId) {
+        _entityManager.createQuery("UPDATE Student s SET s.groupId = null WHERE s.studentIndex = :studentIndex AND s.groupId = :groupId")
+                .setParameter("groupId", groupId)
+                .setParameter("studentIndex", studentIndex)
+                .executeUpdate();
+    }
 }

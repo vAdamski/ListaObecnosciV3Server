@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int subjectId;
+    private Integer subjectId;
     private String name;
 
     public Subject() {
@@ -17,18 +17,18 @@ public class Subject {
         this.name = name;
     }
 
-    public Subject(int subjectId, String name) {
+    public Subject(Integer subjectId, String name) {
         this.subjectId = subjectId;
         this.name = name;
     }
 
     // Getters and setters for the class variables
 
-    public int getSubjectId() {
+    public Integer getSubjectId() {
         return subjectId;
     }
 
-    public void setSubjectId(int subjectId) {
+    public void setSubjectId(Integer subjectId) {
         this.subjectId = subjectId;
     }
 
