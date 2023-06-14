@@ -85,9 +85,11 @@ public class StudentRepository extends BaseRepository {
     }
 
     public void deleteStudentFromGroup(String studentIndex, Integer groupId) {
+        _entityManager.getTransaction().begin();
         _entityManager.createQuery("UPDATE Student s SET s.groupId = null WHERE s.studentIndex = :studentIndex AND s.groupId = :groupId")
                 .setParameter("groupId", groupId)
                 .setParameter("studentIndex", studentIndex)
                 .executeUpdate();
+        _entityManager.getTransaction().commit();
     }
 }
