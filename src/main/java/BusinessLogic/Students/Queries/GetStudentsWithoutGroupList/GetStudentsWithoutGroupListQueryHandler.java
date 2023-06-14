@@ -9,12 +9,30 @@ import Shared.Helpers.ResponseHandler.ResponseHandler;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą pobierania listy studentów bez grupy.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class GetStudentsWithoutGroupListQueryHandler implements IRequestHandler {
+    /**
+     * Repozytorium studenta.
+     */
     private final StudentRepository _studentRepository;
+    /**
+     * Konstruktor klasy GetStudentsWithoutGroupListQueryHandler.
+     * Tworzy obiekt klasy StudentRepository.
+     */
     public GetStudentsWithoutGroupListQueryHandler() {
         _studentRepository = new StudentRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową pobierania listy studentów bez grupy.
+     *
+     * @param json DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
+     * @return ResponseHandler<ArrayList < Student>> w formacie JSON gdzie ArrayList<Student> jest listą studentów.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy studentów.
+     */
     @Override
     public String handle(String json) throws Exception {
         try
