@@ -47,11 +47,13 @@ public class PresenceRepository extends BaseRepository {
     }
 
     public void updateStudentPresence(int periodId, String studentIndex, String status) {
+        _entityManager.getTransaction().begin();
         _entityManager.createQuery("UPDATE Presence p SET p.status = :status WHERE p.periodId = :periodId AND p.studentIndex = :studentIndex")
                 .setParameter("status", status)
                 .setParameter("periodId", periodId)
                 .setParameter("studentIndex", studentIndex)
                 .executeUpdate();
+        _entityManager.getTransaction().commit();
     }
 
     public void deleteAllPresencesForStudent(String studentIndex) {
