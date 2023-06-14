@@ -26,9 +26,11 @@ public class PresenceRepository extends BaseRepository {
     }
 
     public void deletePresencesForPeriod(Integer presenceId) {
+        _entityManager.getTransaction().begin();
         _entityManager.createQuery("DELETE FROM Presence p WHERE p.periodId = :presenceId")
                 .setParameter("presenceId", presenceId)
                 .executeUpdate();
+        _entityManager.getTransaction().commit();
     }
 
     public ArrayList<Presence> getPresenceListForPeriod(Integer periodId) {
