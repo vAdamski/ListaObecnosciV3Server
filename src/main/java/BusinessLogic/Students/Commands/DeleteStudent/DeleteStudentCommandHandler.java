@@ -1,6 +1,7 @@
 package BusinessLogic.Students.Commands.DeleteStudent;
 
 import BusinessLogic.Interfaces.IRequestHandler;
+import Repositories.PresenceRepository;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
@@ -10,10 +11,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.ArrayList;
 
 public class DeleteStudentCommandHandler implements IRequestHandler {
-    private StudentRepository _studentRepository;
+    private final StudentRepository _studentRepository;
+    private final PresenceRepository _presenceRepository;
     public DeleteStudentCommandHandler()
     {
         _studentRepository = new StudentRepository();
+        _presenceRepository = new PresenceRepository();
     }
 
     @Override
@@ -22,6 +25,9 @@ public class DeleteStudentCommandHandler implements IRequestHandler {
         {
             TypeReference<DataHandler<String>> typeReference = new TypeReference<DataHandler<String>>() {};
             DataHandler<String> dataHandler = JsonConverter.convertJsonToClass(json, typeReference);
+
+            _presenceRepository.deleteAllPresencesForStudent(dataHandler.getObject());
+
             _studentRepository.deleteStudent(dataHandler.getObject());
 
             return JsonConverter.convertClassToJson(new ResponseHandler<Boolean>(true, true));

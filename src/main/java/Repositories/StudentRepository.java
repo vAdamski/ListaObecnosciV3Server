@@ -50,7 +50,6 @@ public class StudentRepository extends BaseRepository {
 
     public Student getStudentById(int id) {
         Student student = _entityManager.find(Student.class, id);
-        
         return student;
     }
 

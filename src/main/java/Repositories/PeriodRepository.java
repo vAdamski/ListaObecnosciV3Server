@@ -57,4 +57,11 @@ public class PeriodRepository extends BaseRepository{
                 .executeUpdate();
         _entityManager.getTransaction().commit();
     }
+
+    public ArrayList<Period> getListOfPeriodsForGroup(Integer groupId) {
+        ArrayList<Period> periods = (ArrayList<Period>) _entityManager.createQuery("SELECT p FROM Period p WHERE p.groupId = :groupId")
+                .setParameter("groupId", groupId)
+                .getResultList();
+        return periods;
+    }
 }

@@ -53,4 +53,12 @@ public class PresenceRepository extends BaseRepository {
                 .setParameter("studentIndex", studentIndex)
                 .executeUpdate();
     }
+
+    public void deleteAllPresencesForStudent(String studentIndex) {
+        _entityManager.getTransaction().begin();
+        _entityManager.createQuery("DELETE FROM Presence WHERE studentIndex = :studentIndex")
+                .setParameter("studentIndex", studentIndex)
+                .executeUpdate();
+        _entityManager.getTransaction().commit();
+    }
 }
