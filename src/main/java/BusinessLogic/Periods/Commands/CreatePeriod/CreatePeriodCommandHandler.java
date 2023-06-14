@@ -1,7 +1,7 @@
 package BusinessLogic.Periods.Commands.CreatePeriod;
 
 import BusinessLogic.Interfaces.IRequestHandler;
-import BusinessLogic.Mappers.CreatePeriodVmToPeriod;
+import Repositories.PeriodRepository;
 import Repositories.PresenceRepository;
 import Repositories.StudentRepository;
 import Shared.Entities.Period;
@@ -11,8 +11,6 @@ import Shared.Enums.PresenceStatus;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
-import Repositories.PeriodRepository;
-import Shared.ViewModels.CreatePeriodVm;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;

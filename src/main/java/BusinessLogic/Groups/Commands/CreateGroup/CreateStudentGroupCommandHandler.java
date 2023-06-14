@@ -1,14 +1,11 @@
 package BusinessLogic.Groups.Commands.CreateGroup;
 
 import BusinessLogic.Interfaces.IRequestHandler;
-import BusinessLogic.Mappers.CreateStudentGroupVmToStudentGroup;
-import BusinessLogic.Mappers.CreateStudentVmToStudent;
 import Shared.Entities.StudentGroup;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
 import Repositories.StudentGroupRepository;
-import Shared.ViewModels.CreateStudentGroupVm;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;

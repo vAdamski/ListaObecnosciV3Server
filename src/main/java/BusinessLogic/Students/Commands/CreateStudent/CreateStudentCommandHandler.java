@@ -1,12 +1,10 @@
 package BusinessLogic.Students.Commands.CreateStudent;
 import BusinessLogic.Interfaces.IRequestHandler;
-import BusinessLogic.Mappers.CreateStudentVmToStudent;
 import Shared.Entities.Student;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
 import Repositories.StudentRepository;
-import Shared.ViewModels.CreateStudentVm;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;

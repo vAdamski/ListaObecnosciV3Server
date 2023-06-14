@@ -1,13 +1,11 @@
 package BusinessLogic.Subjects.Commands.CreateSubject;
 
 import BusinessLogic.Interfaces.IRequestHandler;
-import BusinessLogic.Mappers.CreateSubjectVmToSubject;
 import Shared.Entities.Subject;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
 import Repositories.SubjectRepository;
-import Shared.ViewModels.CreateSubjectVm;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;

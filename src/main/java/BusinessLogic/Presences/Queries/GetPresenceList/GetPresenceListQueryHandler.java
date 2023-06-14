@@ -8,7 +8,6 @@ import Shared.Entities.Student;
 import Shared.Helpers.DataHandler.DataHandler;
 import Shared.Helpers.JsonConverter;
 import Shared.Helpers.ResponseHandler.ResponseHandler;
-import Shared.ViewModels.GetPresentsListVm;
 import Shared.ViewModels.PresenceVm;
 import com.fasterxml.jackson.core.type.TypeReference;
 
