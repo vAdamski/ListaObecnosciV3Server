@@ -36,8 +36,8 @@ public class DeleteStudentCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową usuwania studenta.
      *
-     * @param json DataHandler<String> w formacie JSON gdzie string jest indeksem studenta.
-     * @return ResponseHandler<Boolean> w formacie JSON.
+     * @param json String DataHandler<String> w formacie JSON gdzie string jest indeksem studenta.
+     * @return String ResponseHandler<Boolean> w formacie JSON.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć studenta.
      */
     @Override

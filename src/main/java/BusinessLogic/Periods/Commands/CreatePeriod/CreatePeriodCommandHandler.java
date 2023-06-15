@@ -45,8 +45,8 @@ public class CreatePeriodCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową tworzenia terminu.
      *
-     * @param json DataHandler<Period> w formacie JSON gdzie Period jest terminem.
-     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
+     * @param json String DataHandler<Period> w formacie JSON gdzie Period jest terminem.
+     * @return String ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się utworzyć terminu.
      */
     @Override

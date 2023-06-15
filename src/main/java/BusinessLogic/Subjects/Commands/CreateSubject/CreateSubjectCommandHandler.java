@@ -32,8 +32,8 @@ public class CreateSubjectCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową tworzenia przedmiotu.
      *
-     * @param json DataHandler<Subject> w formacie JSON gdzie Subject jest obiektem przedmiotu.
-     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
+     * @param json String DataHandler<Subject> w formacie JSON gdzie Subject jest obiektem przedmiotu.
+     * @return String ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się utworzyć przedmiotu.
      */
     @Override

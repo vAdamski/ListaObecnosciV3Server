@@ -45,8 +45,8 @@ public class CreateStudentCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową tworzenia studenta
      *
-     * @param json DataHandler<Student> w formacie JSON gdzie Student to obiekt studenta.
-     * @return ResponseHandler<Boolean> w formacie JSON
+     * @param json String DataHandler<Student> w formacie JSON gdzie Student to obiekt studenta.
+     * @return String ResponseHandler<Boolean> w formacie JSON
      * @throws Exception Rzucany, gdy nie udało się utworzyć studenta
      */
     public String handle(String json) throws Exception {

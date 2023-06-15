@@ -29,7 +29,7 @@ public class GetStudentListForGroupQueryHandler implements IRequestHandler {
     /**
      * Metoda obsługująca żądanie pobrania listy studentów dla grupy.
      *
-     * @param json Json przedstawiający DataHandler<Integer> z id grupy.
+     * @param json String Json przedstawiający DataHandler<Integer> z id grupy.
      * @return String Json zawierający ResponseHandler<ArrayList<Student>> z listą studentów.
      * @throws Exception Wyjątek wyrzucany w przypadku niepowodzenia operacji.
      */

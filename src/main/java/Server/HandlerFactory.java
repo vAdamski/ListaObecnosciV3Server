@@ -30,7 +30,7 @@ public class HandlerFactory {
     /**
      * Metoda `getHandler` zwraca obiekt implementujący interfejs `IRequestHandler` na podstawie otrzymanego JSON-a.
      *
-     * @param json JSON zawierający informacje o żądaniu.
+     * @param json String JSON zawierający informacje o żądaniu.
      * @return Obiekt implementujący interfejs `IRequestHandler` odpowiadający żądaniu.
      * @throws JsonProcessingException Występuje w przypadku problemów z przetwarzaniem JSON-a.
      */

@@ -41,8 +41,8 @@ public class GetPresenceListQueryHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową pobierania listy obecności.
      *
-     * @param json DataHandler<Integer> w formacie JSON gdzie Integer jest identyfikatorem terminu.
-     * @return ResponseHandler<ArrayList<PresenceVm>> w formacie JSON zawierający listę obecności.
+     * @param json String DataHandler<Integer> w formacie JSON gdzie Integer jest identyfikatorem terminu.
+     * @return String ResponseHandler<ArrayList<PresenceVm>> w formacie JSON zawierający listę obecności.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy obecności.
      */
     @Override

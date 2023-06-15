@@ -29,8 +29,8 @@ public class GetStudentsListQueryHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową pobierania listy studentów.
      *
-     * @param json DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
-     * @return ResponseHandler<ArrayList < Student>> w formacie JSON gdzie ArrayList<Student> jest listą studentów.
+     * @param json String DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
+     * @return String ResponseHandler<ArrayList < Student>> w formacie JSON gdzie ArrayList<Student> jest listą studentów.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy studentów.
      */
     public String handle(String json) throws Exception {

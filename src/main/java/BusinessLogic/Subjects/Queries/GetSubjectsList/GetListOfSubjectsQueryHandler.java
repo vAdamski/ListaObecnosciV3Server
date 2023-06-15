@@ -29,8 +29,8 @@ public class GetListOfSubjectsQueryHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową pobierania listy przedmiotów.
      *
-     * @param json DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
-     * @return ResponseHandler<ArrayList < Subject>> w formacie JSON gdzie ArrayList<Subject> jest listą przedmiotów.
+     * @param json String DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
+     * @return String ResponseHandler<ArrayList < Subject>> w formacie JSON gdzie ArrayList<Subject> jest listą przedmiotów.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy przedmiotów.
      */
     @Override

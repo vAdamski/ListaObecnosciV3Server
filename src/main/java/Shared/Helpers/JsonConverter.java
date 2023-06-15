@@ -11,7 +11,7 @@ public class JsonConverter {
     /**
      * Konwertuje JSON na obiekt określonego typu.
      *
-     * @param json           JSON, który ma zostać przekonwertowany.
+     * @param json           String JSON, który ma zostać przekonwertowany.
      * @param typeReference  Referencja do typu obiektu, na który ma być przekonwertowany JSON.
      * @param <T>            Typ obiektu, na który ma być przekonwertowany JSON.
      * @return Obiekt przekonwertowany z JSON.

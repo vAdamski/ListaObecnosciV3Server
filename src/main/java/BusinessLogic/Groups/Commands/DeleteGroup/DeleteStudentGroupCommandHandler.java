@@ -11,14 +11,35 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą usuwania studenta z grupy.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class DeleteStudentGroupCommandHandler implements IRequestHandler {
+    /**
+     * Repozytorium grupy.
+     */
     private final StudentGroupRepository _studentGroupRepository;
+    /**
+     * Repozytorium studenta.
+     */
     private final StudentRepository _studentRepository;
+    /**
+     * Konstruktor klasy DeleteStudentGroupCommandHandler.
+     * Tworzy obiekt klasy StudentGroupRepository i StudentRepository.
+     */
     public DeleteStudentGroupCommandHandler() {
         _studentGroupRepository = new StudentGroupRepository();
         _studentRepository = new StudentRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową usuwania studenta z grupy.
+     *
+     * @param json String DataHandler<Integer> w formacie JSON gdzie Integer jest id grupy.
+     * @return String ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć studenta z grupy.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

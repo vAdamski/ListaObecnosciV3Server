@@ -31,8 +31,8 @@ public class CreateStudentGroupCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową tworzenia grupy.
      *
-     * @param json DataHandler<StudentGroup> w formacie JSON gdzie StudentGroup jest obiektem grupy.
-     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
+     * @param json String DataHandler<StudentGroup> w formacie JSON gdzie StudentGroup jest obiektem grupy.
+     * @return String ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się utworzyć grupy.
      */
     @Override

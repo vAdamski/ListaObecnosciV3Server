@@ -33,8 +33,8 @@ public class GetListForGroupAndSubjectQueryHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową pobierania terminów dla przedmiotu.
      *
-     * @param json DataHandler<Integer> w formacie JSON gdzie GetPeriodsListVm jest obiektem zawierającym id przedmiotu i grupy.
-     * @return ResponseHandler<ArrayList<Period>> w formacie JSON zawierający listę terminów.
+     * @param json String DataHandler<Integer> w formacie JSON gdzie GetPeriodsListVm jest obiektem zawierającym id przedmiotu i grupy.
+     * @return String ResponseHandler<ArrayList<Period>> w formacie JSON zawierający listę terminów.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać terminów.
      */
     @Override

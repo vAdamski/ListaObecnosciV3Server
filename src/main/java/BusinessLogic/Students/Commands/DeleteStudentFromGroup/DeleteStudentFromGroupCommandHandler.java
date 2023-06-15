@@ -36,8 +36,8 @@ public class DeleteStudentFromGroupCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową usuwania studenta z grupy.
      *
-     * @param json DataHandler<StudentToGroupVm> w formacie JSON gdzie StudentToGroupVm jest obiektem zawierającym id studenta i id grupy.
-     * @return ResponseHandler<Boolean> w formacie JSON.
+     * @param json String DataHandler<StudentToGroupVm> w formacie JSON gdzie StudentToGroupVm jest obiektem zawierającym id studenta i id grupy.
+     * @return String ResponseHandler<Boolean> w formacie JSON.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć studenta z grupy.
      */
     @Override

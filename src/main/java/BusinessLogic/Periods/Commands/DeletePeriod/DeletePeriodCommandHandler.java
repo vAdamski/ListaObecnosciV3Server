@@ -33,8 +33,8 @@ public class DeletePeriodCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową usuwania terminu.
      *
-     * @param json DataHandler<Integer> w formacie JSON gdzie Integer jest identyfikatorem terminu do usunięci.
-     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
+     * @param json String DataHandler<Integer> w formacie JSON gdzie Integer jest identyfikatorem terminu do usunięci.
+     * @return String ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć terminu.
      */
     @Override

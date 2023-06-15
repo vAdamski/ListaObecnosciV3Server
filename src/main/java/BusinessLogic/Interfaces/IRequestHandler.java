@@ -10,7 +10,7 @@ public interface IRequestHandler {
      * Metoda handle obsługuje zapytanie od klienta. Przyjmuje klasę przekonwertowaną na JSONa,
      * a odpowiedź zwraca w postaci JSONa
      * @param json String
-     * @return String
+     * @return String ResponseHandler w formacie JSON
      * @throws Exception
      */
     String handle(String json) throws Exception;

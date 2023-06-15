@@ -28,8 +28,8 @@ public class GetListOfGroupsQueryHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową pobierania listy grup.
      *
-     * @param json DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
-     * @return ResponseHandler<ArrayList < StudentGroup>> w formacie JSON gdzie ArrayList<StudentGroup> jest listą grup.
+     * @param json String DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
+     * @return String ResponseHandler<ArrayList < StudentGroup>> w formacie JSON gdzie ArrayList<StudentGroup> jest listą grup.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy grup.
      */
     @Override

@@ -43,8 +43,8 @@ public class DeleteSubjectCommandHandler implements IRequestHandler {
     /**
      * Wykonuje logikę biznesową usuwania przedmiotu.
      *
-     * @param json DataHandler<Integer> w formacie JSON gdzie Integer jest id przedmiotu.
-     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
+     * @param json String DataHandler<Integer> w formacie JSON gdzie Integer jest id przedmiotu.
+     * @return String ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
      * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć przedmiotu.
      */
     @Override
