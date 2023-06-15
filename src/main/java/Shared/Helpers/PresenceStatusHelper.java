@@ -2,7 +2,16 @@ package Shared.Helpers;
 
 import Shared.Enums.PresenceStatus;
 
+/**
+ * Klasa pomocnicza do konwersji statusu obecności.
+ */
 public class PresenceStatusHelper {
+    /**
+     * Konwertuje status obecności na String.
+     *
+     * @param presenceStatus Status obecności.
+     * @return Status obecności w postaci String.
+     */
     public static String getPresenceStatus(PresenceStatus presenceStatus) {
         switch (presenceStatus) {
             case PRESENT:
@@ -18,6 +27,12 @@ public class PresenceStatusHelper {
         }
     }
 
+    /**
+     * Konwertuje status obecności na PresenceStatus.
+     *
+     * @param presenceStatus Status obecności w postaci String.
+     * @return Status obecności.
+     */
     public static PresenceStatus getPresenceStatus(String presenceStatus) {
         switch (presenceStatus.toUpperCase()) {
             case "PRESENT":
