@@ -8,12 +8,30 @@ import Repositories.StudentGroupRepository;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą pobierania listy grup.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class GetListOfGroupsQueryHandler implements IRequestHandler {
+    /**
+     * Repozytorium grupy.
+     */
     StudentGroupRepository _studentGroupRepository;
+    /**
+     * Konstruktor klasy GetListOfGroupsQueryHandler.
+     * Tworzy obiekt klasy StudentGroupRepository.
+     */
     public GetListOfGroupsQueryHandler() {
         _studentGroupRepository = new StudentGroupRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową pobierania listy grup.
+     *
+     * @param json DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
+     * @return ResponseHandler<ArrayList < StudentGroup>> w formacie JSON gdzie ArrayList<StudentGroup> jest listą grup.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy grup.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

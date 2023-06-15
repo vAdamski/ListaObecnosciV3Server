@@ -15,16 +15,40 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą tworzenia terminu.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class CreatePeriodCommandHandler implements IRequestHandler {
+    /**
+     * Repozytorium terminów.
+     */
     private final PeriodRepository _periodRepository;
+    /**
+     * Repozytorium studentów.
+     */
     private final StudentRepository _studentRepository;
+    /**
+     * Repozytorium obecności.
+     */
     private final PresenceRepository _presenceRepository;
+    /**
+     * Konstruktor klasy CreatePeriodCommandHandler.
+     * Tworzy obiekty klasy PeriodRepository, StudentRepository, PresenceRepository.
+     */
     public CreatePeriodCommandHandler() {
         _periodRepository = new PeriodRepository();
         _studentRepository = new StudentRepository();
         _presenceRepository = new PresenceRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową tworzenia terminu.
+     *
+     * @param json DataHandler<Period> w formacie JSON gdzie Period jest terminem.
+     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się utworzyć terminu.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

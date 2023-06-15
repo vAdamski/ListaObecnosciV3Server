@@ -14,15 +14,37 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą pobierania listy obecności.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class GetPresenceListQueryHandler implements IRequestHandler {
+    /**
+     * Repozytorium obecności.
+     */
     private final PresenceRepository _presenceRepository;
+
+    /**
+     * Repozytorium studentów.
+     */
     private final StudentRepository _studentRepository;
 
+    /**
+     * Konstruktor klasy GetPresenceListQueryHandler.
+     * Tworzy obiekty klasy PresenceRepository, StudentRepository.
+     */
     public GetPresenceListQueryHandler() {
         _presenceRepository = new PresenceRepository();
         _studentRepository = new StudentRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową pobierania listy obecności.
+     *
+     * @param json DataHandler<Integer> w formacie JSON gdzie Integer jest identyfikatorem terminu.
+     * @return ResponseHandler<ArrayList<PresenceVm>> w formacie JSON zawierający listę obecności.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy obecności.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

@@ -10,14 +10,32 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą tworzenia przedmiotu.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class CreateSubjectCommandHandler implements IRequestHandler {
+    /**
+     * Repozytorium przedmiotu.
+     */
     public final SubjectRepository _subjectRepository;
 
+    /**
+     * Konstruktor klasy CreateSubjectCommandHandler.
+     * Tworzy obiekt klasy SubjectRepository.
+     */
     public CreateSubjectCommandHandler() {
 
         _subjectRepository = new SubjectRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową tworzenia przedmiotu.
+     *
+     * @param json DataHandler<Subject> w formacie JSON gdzie Subject jest obiektem przedmiotu.
+     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się utworzyć przedmiotu.
+     */
     @Override
     public String handle(String json) throws Exception {
         try {

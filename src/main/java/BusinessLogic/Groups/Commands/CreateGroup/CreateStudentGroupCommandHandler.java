@@ -10,14 +10,31 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą tworzenia grupy.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class CreateStudentGroupCommandHandler implements IRequestHandler {
-    StudentGroupRepository _studentGroupRepository;
+    /**
+     * Repozytorium grupy.
+     */
+    private final StudentGroupRepository _studentGroupRepository;
 
+    /**
+     * Konstruktor klasy CreateStudentGroupCommandHandler.
+     * Tworzy obiekt klasy StudentGroupRepository.
+     */
     public CreateStudentGroupCommandHandler() {
         _studentGroupRepository = new StudentGroupRepository();
     }
 
-
+    /**
+     * Wykonuje logikę biznesową tworzenia grupy.
+     *
+     * @param json DataHandler<StudentGroup> w formacie JSON gdzie StudentGroup jest obiektem grupy.
+     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu lub niepowodzeniu operacji.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się utworzyć grupy.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

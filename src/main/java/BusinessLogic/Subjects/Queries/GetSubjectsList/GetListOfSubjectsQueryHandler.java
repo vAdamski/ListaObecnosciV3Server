@@ -8,12 +8,31 @@ import Repositories.SubjectRepository;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą pobierania listy przedmiotów.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class GetListOfSubjectsQueryHandler implements IRequestHandler {
+    /**
+     * Repozytorium przedmiotu.
+     */
     private final SubjectRepository _subjectRepository;
+
+    /**
+     * Konstruktor klasy GetListOfSubjectsQueryHandler.
+     * Tworzy obiekt klasy SubjectRepository.
+     */
     public GetListOfSubjectsQueryHandler() {
         _subjectRepository = new SubjectRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową pobierania listy przedmiotów.
+     *
+     * @param json DataHandler<String> w formacie JSON gdzie string może być pusty ponieważ nie ma wpływu na wynik.
+     * @return ResponseHandler<ArrayList < Subject>> w formacie JSON gdzie ArrayList<Subject> jest listą przedmiotów.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać listy przedmiotów.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

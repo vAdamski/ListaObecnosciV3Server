@@ -8,14 +8,35 @@ import Shared.Helpers.ResponseHandler.ResponseHandler;
 import Repositories.PeriodRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą usuwania terminu.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class DeletePeriodCommandHandler implements IRequestHandler {
+    /**
+     * Repozytorium terminów.
+     */
     private final PeriodRepository _periodRepository;
+    /**
+     * Repozytorium obecności.
+     */
     private final PresenceRepository _presenceRepository;
+    /**
+     * Konstruktor klasy DeletePeriodCommandHandler.
+     * Tworzy obiekty klasy PeriodRepository, PresenceRepository.
+     */
     public DeletePeriodCommandHandler() {
         _periodRepository = new PeriodRepository();
         _presenceRepository = new PresenceRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową usuwania terminu.
+     *
+     * @param json DataHandler<Integer> w formacie JSON gdzie Integer jest identyfikatorem terminu do usunięci.
+     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć terminu.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

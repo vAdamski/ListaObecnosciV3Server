@@ -13,16 +13,40 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą usuwania przedmiotu.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class DeleteSubjectCommandHandler implements IRequestHandler {
+    /**
+     * Repozytorium przedmiotu.
+     */
     private final SubjectRepository _subjectRepository;
+    /**
+     * Repozytorium terminów.
+     */
     private final PeriodRepository _periodRepository;
+    /**
+     * Repozytorium obecności.
+     */
     private final PresenceRepository _presenceRepository;
+    /**
+     * Konstruktor klasy DeleteSubjectCommandHandler.
+     * Tworzy obiekty klasy SubjectRepository, PeriodRepository, PresenceRepository.
+     */
     public DeleteSubjectCommandHandler() {
         _subjectRepository = new SubjectRepository();
         _periodRepository = new PeriodRepository();
         _presenceRepository = new PresenceRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową usuwania przedmiotu.
+     *
+     * @param json DataHandler<Integer> w formacie JSON gdzie Integer jest id przedmiotu.
+     * @return ResponseHandler<Boolean> w formacie JSON zawierający informację o powodzeniu operacji.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się usunąć przedmiotu.
+     */
     @Override
     public String handle(String json) throws Exception {
         try {

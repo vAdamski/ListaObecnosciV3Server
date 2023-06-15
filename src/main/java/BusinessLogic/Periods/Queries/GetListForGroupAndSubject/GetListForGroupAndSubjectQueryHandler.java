@@ -11,14 +11,32 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 
+/**
+ * Przechowuje logikę biznesową dotyczącą pobierania terminów dla przedmiotu.
+ * Implementuje interfejs IRequestHandler.
+ */
 public class GetListForGroupAndSubjectQueryHandler implements IRequestHandler {
+    /**
+     * Repozytorium terminów.
+     */
     private final PeriodRepository _periodRepository;
 
+    /**
+     * Konstruktor klasy GetListOfPeriodsForSubjectQueryHandler.
+     * Tworzy obiekt klasy PeriodRepository.
+     */
     public GetListForGroupAndSubjectQueryHandler() {
 
         _periodRepository = new PeriodRepository();
     }
 
+    /**
+     * Wykonuje logikę biznesową pobierania terminów dla przedmiotu.
+     *
+     * @param json DataHandler<Integer> w formacie JSON gdzie GetPeriodsListVm jest obiektem zawierającym id przedmiotu i grupy.
+     * @return ResponseHandler<ArrayList<Period>> w formacie JSON zawierający listę terminów.
+     * @throws Exception Wyjątek zgłaszany, gdy nie udało się pobrać terminów.
+     */
     @Override
     public String handle(String json) throws Exception {
         try

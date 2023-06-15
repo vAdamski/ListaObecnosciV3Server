@@ -22,7 +22,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Klasa `HandlerFactory` jest fabryką obsługującą tworzenie odpowiednich obiektów obsługujących żądania na podstawie otrzymanego JSON-a.
+ */
 public class HandlerFactory {
+    /**
+     * Metoda `getHandler` zwraca obiekt implementujący interfejs `IRequestHandler` na podstawie otrzymanego JSON-a.
+     *
+     * @param json JSON zawierający informacje o żądaniu.
+     * @return Obiekt implementujący interfejs `IRequestHandler` odpowiadający żądaniu.
+     * @throws JsonProcessingException Występuje w przypadku problemów z przetwarzaniem JSON-a.
+     */
     public IRequestHandler getHandler(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(json);

@@ -8,32 +8,45 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Klasa `ClientHandler` implementuje interfejs `Runnable` i obsługuje żądania klienta.
+ * Odbiera dane od klienta, przetwarza je i odpowiada na żądania.
+ */
 public class ClientHandler implements Runnable {
     private final Socket clientSocket;
 
-    // Constructor
+    /**
+     * Konstruktor klasy ClientHandler.
+     *
+     * @param socket Socket klienta.
+     */
     public ClientHandler(Socket socket) {
         this.clientSocket = socket;
     }
 
+    /**
+     * Metoda run, implementująca interfejs Runnable, obsługuje żądania klienta.
+     */
     public void run() {
         PrintWriter out = null;
         BufferedReader in = null;
         try {
-            out = new PrintWriter(
-                    clientSocket.getOutputStream(), true);
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
 
             in = new BufferedReader(
-                    new InputStreamReader(
-                            clientSocket.getInputStream()));
+                    new InputStreamReader(clientSocket.getInputStream()));
 
             String json;
             while ((json = in.readLine()) != null) {
-                System.out.printf(" Sent from the client: %s\n", json);
+                System.out.printf("Odebrane od klienta: %s\n", json);
 
+                // Utworzenie odpowiedniego obiektu obsługującego żądanie na podstawie otrzymanego JSON-a
                 IRequestHandler requestHandler = new HandlerFactory().getHandler(json);
+
+                // Przetworzenie żądania i otrzymanie odpowiedzi w postaci JSON-a
                 String jsonResponse = requestHandler.handle(json);
 
+                // Wysłanie odpowiedzi do klienta
                 out.println(jsonResponse);
             }
         } catch (IOException e) {
@@ -55,3 +68,4 @@ public class ClientHandler implements Runnable {
         }
     }
 }
+
