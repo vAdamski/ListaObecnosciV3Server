@@ -13,6 +13,7 @@ import BusinessLogic.Students.Commands.AssigneStudentToGroup.AssigneStudentToGro
 import BusinessLogic.Students.Commands.CreateStudent.CreateStudentCommandHandler;
 import BusinessLogic.Students.Commands.DeleteStudent.DeleteStudentCommandHandler;
 import BusinessLogic.Students.Commands.DeleteStudentFromGroup.DeleteStudentFromGroupCommandHandler;
+import BusinessLogic.Students.Queries.GetStudentListForGroup.GetStudentListForGroupQueryHandler;
 import BusinessLogic.Students.Queries.GetStudentsList.GetStudentsListQueryHandler;
 import BusinessLogic.Students.Queries.GetStudentsWithoutGroupList.GetStudentsWithoutGroupListQueryHandler;
 import BusinessLogic.Subjects.Commands.CreateSubject.CreateSubjectCommandHandler;
@@ -49,6 +50,8 @@ public class HandlerFactory {
                 return new GetStudentsWithoutGroupListQueryHandler();
             case "GetStudentGroupList":
                 return new GetListOfGroupsQueryHandler();
+            case "GetStudentListForGroup":
+                return new GetStudentListForGroupQueryHandler();
             case "CreateStudentGroup":
                 return new CreateStudentGroupCommandHandler();
             case "DeleteStudentGroup":
